@@ -83,7 +83,7 @@ const updateUser = async (req, res) => {
   
   await user.save();
   const token = user.createJWT();
-  attachCookie({ res, token });
+  attachCookies({ res, token });
   
   res.status(StatusCodes.OK).json({
     user,
@@ -91,10 +91,15 @@ const updateUser = async (req, res) => {
   });
 };
 
+// const getCurrentUser = async (req, res) => {
+//   const user = await User.findOne({ _id: req.user.userId });
+//   res.status(StatusCodes.OK).json({ user, location: user.location });
+// }
+
 const getCurrentUser = async (req, res) => {
   const user = await User.findOne({ _id: req.user.userId });
   res.status(StatusCodes.OK).json({ user, location: user.location });
-}
+};
 
 const logoutUser = async (req, res) => {
   res.cookie('token', 'logout', {

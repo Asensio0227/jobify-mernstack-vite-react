@@ -11,7 +11,7 @@ const createJob = async (req, res) => {
   if (!company || !position) {
     throw new BadRequestError("PLease provide all values");
   };
-  req.body.createdBy=req.user.userId
+  req.body.createdBy = req.user.userId;
   // console.log(req.body.createdBy);
   // console.log(req.user);
 
@@ -179,7 +179,5 @@ const showStats = async (req, res) => {
     monthlyApplications
   });
 };
-
-
 
 export { createJob, deleteJob, getAllJobs, updateJob, showStats };
