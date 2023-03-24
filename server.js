@@ -37,7 +37,7 @@ if (process.env.NODE_ENV !== "production") {
 //   max: 80
 // }
 // ));
-app.use(express.static(path.resolve(__dirname,"./client/dist")))
+app.use(express.static(path.resolve(__dirname,"./public")))
 
 app.use(express.json());
 app.use(cookieParser());
@@ -51,7 +51,7 @@ app.use("/api/v1/auth", authRoutes);
 app.use("/api/v1/jobs", authenticatedUser, jobsRoutes);
 
 app.get("*", (req, res) => {
-  res.sendFile(path.resolve(__dirname, "./client/dist", "index.html"));
+  res.sendFile(path.resolve(__dirname, "./public", "index.html"));
 })
 
 // middleware
